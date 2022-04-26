@@ -1,6 +1,11 @@
 import { Category } from "./enums";
 import { Book, Logger, Author, Librarian, Magazine } from "./interfaces";
-import { UniversityLibrarian, ReferenceItem } from "./classes";
+import {
+  UniversityLibrarian,
+  ReferenceItem,
+  Employee,
+  Researcher,
+} from "./classes";
 import * as util from "./lib/utilityFunctions";
 
 function PrintBookInfo({ title: bookTitle, author: bookAuthor }): void {
@@ -89,3 +94,16 @@ let serialNovel: Book & Magazine = {
   category: Category.Fiction,
   publisher: "Serial Press",
 };
+
+// creating Mixin
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+  baseCtors.forEach((baseCtor) => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
+      derivedCtor.prototype[name] = baseCtor.prototype[name];
+    });
+  });
+}
+
+applyMixins(UniversityLibrarian, [Employee, Researcher]);
+let newLibrarian = new UniversityLibrarian();
+newLibrarian.doResearch("Economics");
