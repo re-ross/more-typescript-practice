@@ -20,3 +20,35 @@ function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
 // let { title: bookTitle, author: bookAuthor } = book1;
 // console.log(bookTitle);
 // console.log(bookAuthor);
+
+let schoolBooks: Book[] = [
+  {
+    id: 10,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    available: true,
+    category: Category.Fiction,
+  },
+  {
+    id: 11,
+    title: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+    available: true,
+    category: Category.History,
+  },
+  {
+    id: 12,
+    title: "Clear Light of Day",
+    author: "Anita Desai",
+    available: true,
+    category: Category.Fiction,
+  },
+];
+
+let booksRead: Book[] = util.GetAllBooks();
+booksRead.push(...schoolBooks);
+// console.log(booksRead);
+
+let poets: string[] = ["Shelley", "Collins", "Hughes"];
+let authors: string[] = ["Tolstoy", "Fitzgerald", ...poets];
+console.log(authors);
