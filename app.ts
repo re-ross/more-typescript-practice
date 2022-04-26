@@ -76,9 +76,9 @@ let allBooks: Book[] = util.GetAllBooks();
 let allMagazines: Magazine[] = util.GetAllMagazines();
 
 // union type
-let readingMaterial: Book | Magazine = allBooks[0];
+let readingMaterial: PrintMaterial = allBooks[0];
 
-function printTitle(item: Book | Magazine): void {
+function printTitle(item: PrintMaterial): void {
   console.log(item.title);
 }
 
@@ -86,7 +86,7 @@ printTitle(allBooks[0]);
 printTitle(allMagazines[0]);
 
 // intersection type
-let serialNovel: Book & Magazine = {
+let serialNovel: Serial = {
   id: 100,
   title: "The Gradual Tale",
   author: "Occasional Pen",
@@ -106,4 +106,16 @@ function applyMixins(derivedCtor: any, baseCtors: any[]) {
 
 applyMixins(UniversityLibrarian, [Employee, Researcher]);
 let newLibrarian = new UniversityLibrarian();
-newLibrarian.doResearch("Economics");
+// newLibrarian.doResearch("Economics");
+
+// string literals & type aliases
+
+// let frequency: 'monthly' | 'annually' = 'annually'
+type Frequency = "monthly" | "annually";
+
+function getMagazineByFrequency(preferredFrequency: Frequency) {
+  // do something
+}
+
+type PrintMaterial = Book | Magazine;
+type Serial = Book & Magazine;
