@@ -9,6 +9,7 @@ function PrintBookInfo({ title: bookTitle, author: bookAuthor }): void {
 
 let [book1, book2] = util.GetAllBooks();
 
+// REST
 function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
   PrintBookInfo(book1);
   PrintBookInfo(book2);
@@ -45,10 +46,23 @@ let schoolBooks: Book[] = [
   },
 ];
 
+// spread
 let booksRead: Book[] = util.GetAllBooks();
 booksRead.push(...schoolBooks);
 // console.log(booksRead);
 
 let poets: string[] = ["Shelley", "Collins", "Hughes"];
 let authors: string[] = ["Tolstoy", "Fitzgerald", ...poets];
-console.log(authors);
+// console.log(authors);
+
+// tuples
+// let catalogLocation: [string, Book] = ["A 123.345", book1];
+
+interface KeyValuePair<K, V> extends Array<K | V> {
+  0: K;
+  1: V;
+}
+
+//Key value pairs
+let catalogLocation: KeyValuePair<string, Book> = ["A 123.345", book1];
+catalogLocation[2] = "some string";
