@@ -66,3 +66,26 @@ interface KeyValuePair<K, V> extends Array<K | V> {
 //Key value pairs
 let catalogLocation: KeyValuePair<string, Book> = ["A 123.345", book1];
 catalogLocation[2] = "some string";
+
+let allBooks: Book[] = util.GetAllBooks();
+let allMagazines: Magazine[] = util.GetAllMagazines();
+
+// union type
+let readingMaterial: Book | Magazine = allBooks[0];
+
+function printTitle(item: Book | Magazine): void {
+  console.log(item.title);
+}
+
+printTitle(allBooks[0]);
+printTitle(allMagazines[0]);
+
+// intersection type
+let serialNovel: Book & Magazine = {
+  id: 100,
+  title: "The Gradual Tale",
+  author: "Occasional Pen",
+  available: true,
+  category: Category.Fiction,
+  publisher: "Serial Press",
+};
