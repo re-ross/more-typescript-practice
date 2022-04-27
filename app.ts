@@ -217,25 +217,37 @@ import "./LibrarianExtension";
 
 // ~Symbols~
 
-let mySymbol = Symbol("first_symbol");
-let anotherSymbol = Symbol("first_symbol");
+// let mySymbol = Symbol("first_symbol");
+// let anotherSymbol = Symbol("first_symbol");
 
-// console.log(mySymbol === anotherSymbol);
-// console.log(typeof mySymbol);
-let myObject = {
-  [mySymbol]: "value for my symbol",
-};
-// console.log(myObject[mySymbol]);
-let librarian = new UniversityLibrarian();
-// librarian[CLASS_INFO]();
+// // console.log(mySymbol === anotherSymbol);
+// // console.log(typeof mySymbol);
+// let myObject = {
+//   [mySymbol]: "value for my symbol",
+// };
+// // console.log(myObject[mySymbol]);
+// let librarian = new UniversityLibrarian();
+// // librarian[CLASS_INFO]();
 
-let libraryCustomer = {
-  name: "Thorne",
-  assistCustomer: (custName: string) => console.log(`Assisting ${custName}`),
-};
+// let libraryCustomer = {
+//   name: "Thorne",
+//   assistCustomer: (custName: string) => console.log(`Assisting ${custName}`),
+// };
 
-if (libraryCustomer instanceof UniversityLibrarian) {
-  console.log("A helpful librarian");
-} else {
-  console.log("Not a librarian");
+// if (libraryCustomer instanceof UniversityLibrarian) {
+//   console.log("A helpful librarian");
+// } else {
+//   console.log("Not a librarian");
+// }
+
+let lib1 = new UniversityLibrarian();
+let lib2 = new PublicLibrarian();
+
+try {
+  lib1.assistFaculty = () => console.log("assist faculty replacement method");
+  lib2.teachCommunity = () => console.log("teachCommunity replacement method");
+} catch (error) {
+  console.log(error.message);
 }
+lib1.assistFaculty();
+lib2.teachCommunity();

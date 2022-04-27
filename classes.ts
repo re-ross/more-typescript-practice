@@ -1,5 +1,5 @@
 import * as Interfaces from "./interfaces";
-
+import { sealed, logger, writable } from "./decorators";
 class Employee {
   title: string;
 
@@ -19,7 +19,9 @@ class Researcher {
 }
 export const CLASS_INFO = Symbol();
 
-class UniversityLibrarian
+// @sealed("UniversityLibrarian")
+// @logger
+export class UniversityLibrarian
   implements Interfaces.Librarian, Employee, Researcher
 {
   name: string;
@@ -37,7 +39,7 @@ class UniversityLibrarian
   assistCustomer(custName: string) {
     console.log(this.name + " is assisting " + custName);
   }
-
+  @writable(true)
   assistFaculty() {
     console.log("Assist faculty");
   }
@@ -48,6 +50,7 @@ class UniversityLibrarian
   doResearch(topic: string): void {}
 }
 
+// @logger
 export class PublicLibrarian implements Interfaces.Librarian {
   name: string;
   email: string;
@@ -56,7 +59,7 @@ export class PublicLibrarian implements Interfaces.Librarian {
   assistCustomer(custName: string) {
     console.log("Assisting customer.");
   }
-
+  @writable(false)
   teachCommunity() {
     console.log("Teaching community");
   }
@@ -86,4 +89,4 @@ abstract class ReferenceItem {
   abstract printCitation(): void;
 }
 
-export { UniversityLibrarian, ReferenceItem, Employee, Researcher };
+export { ReferenceItem, Employee, Researcher };
