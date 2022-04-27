@@ -240,14 +240,49 @@ import "./LibrarianExtension";
 //   console.log("Not a librarian");
 // }
 
-let lib1 = new UniversityLibrarian();
-let lib2 = new PublicLibrarian();
+// let lib1 = new UniversityLibrarian();
+// let lib2 = new PublicLibrarian();
 
-try {
-  lib1.assistFaculty = () => console.log("assist faculty replacement method");
-  lib2.teachCommunity = () => console.log("teachCommunity replacement method");
-} catch (error) {
-  console.log(error.message);
-}
-lib1.assistFaculty();
-lib2.teachCommunity();
+// try {
+//   lib1.assistFaculty = () => console.log("assist faculty replacement method");
+//   lib2.teachCommunity = () => console.log("teachCommunity replacement method");
+// } catch (error) {
+//   console.log(error.message);
+// }
+// lib1.assistFaculty();
+// lib2.teachCommunity();
+
+// async w/ callbacks
+
+// interface LibMgrCallback {
+//   (err: Error, titles: string[]): void;
+// }
+
+// function getBooksByCategory(cat: Category, cb: LibMgrCallback): void {
+//   setTimeout(() => {
+//     try {
+//       let foundBooks: string[] = util.GetBookTitlesByCategory(cat);
+
+//       if (foundBooks.length > 0) {
+//         cb(null, foundBooks);
+//       } else {
+//         throw new Error("No books found");
+//       }
+//     } catch (error) {
+//       cb(error, null);
+//     }
+//   }, 2000);
+// }
+
+// function logCategorySearch(err: Error, titles: string[]): void {
+//   if (err) {
+//     console.log(`Error message: ${err.message}`);
+//   } else {
+//     console.log("Found the following titles:");
+//     console.log(titles);
+//   }
+// }
+
+// console.log("Beginning search...");
+// getBooksByCategory(Category.Fiction, logCategorySearch);
+// console.log("Search submitted...");
