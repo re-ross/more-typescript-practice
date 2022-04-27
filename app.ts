@@ -1,6 +1,7 @@
 import { Category } from "./enums";
 import { Book, Logger, Author, Librarian, Magazine } from "./interfaces";
 import {
+  CLASS_INFO,
   PublicLibrarian,
   UniversityLibrarian,
   ReferenceItem,
@@ -180,13 +181,13 @@ import "./LibrarianExtension";
 
 // ~TYPE GUARDS (type of)~
 
-function logVisitor(param: number | string) {
-  if (typeof param === "number") {
-    console.log(`${param} new visitors arrived`);
-  } else {
-    console.log(`${param.toUpperCase()} visited`);
-  }
-}
+// function logVisitor(param: number | string) {
+//   if (typeof param === "number") {
+//     console.log(`${param} new visitors arrived`);
+//   } else {
+//     console.log(`${param.toUpperCase()} visited`);
+//   }
+// }
 
 // logVisitor(5);
 // logVisitor("ryan");
@@ -201,14 +202,40 @@ function logVisitor(param: number | string) {
 // }
 
 //~TYPE GUARDS (custom typeguard)~
-function isBook(text: Book | Magazine): text is Book {
-  return (<Book>text).author !== undefined;
-}
 
-let readingMaterial: Book | Magazine = util.GetAllBooks()[0];
+// function isBook(text: Book | Magazine): text is Book {
+//   return (<Book>text).author !== undefined;
+// }
 
-if (isBook(readingMaterial)) {
-  console.log(`The book's author is ${readingMaterial.author}`);
+// let readingMaterial: Book | Magazine = util.GetAllBooks()[0];
+
+// if (isBook(readingMaterial)) {
+//   console.log(`The book's author is ${readingMaterial.author}`);
+// } else {
+//   console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+// }
+
+// ~Symbols~
+
+let mySymbol = Symbol("first_symbol");
+let anotherSymbol = Symbol("first_symbol");
+
+// console.log(mySymbol === anotherSymbol);
+// console.log(typeof mySymbol);
+let myObject = {
+  [mySymbol]: "value for my symbol",
+};
+// console.log(myObject[mySymbol]);
+let librarian = new UniversityLibrarian();
+// librarian[CLASS_INFO]();
+
+let libraryCustomer = {
+  name: "Thorne",
+  assistCustomer: (custName: string) => console.log(`Assisting ${custName}`),
+};
+
+if (libraryCustomer instanceof UniversityLibrarian) {
+  console.log("A helpful librarian");
 } else {
-  console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+  console.log("Not a librarian");
 }
