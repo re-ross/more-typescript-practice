@@ -28,10 +28,29 @@ class UniversityLibrarian
   assistCustomer(custName: string) {
     console.log(this.name + " is assisting " + custName);
   }
+
+  assistFaculty() {
+    console.log("Assist faculty");
+  }
+
   title: string;
   addToSchedule(): void {}
   logTitle(): void {}
   doResearch(topic: string): void {}
+}
+
+export class PublicLibrarian implements Interfaces.Librarian {
+  name: string;
+  email: string;
+  department: string;
+
+  assistCustomer(custName: string) {
+    console.log("Assisting customer.");
+  }
+
+  teachCommunity() {
+    console.log("Teaching community");
+  }
 }
 
 abstract class ReferenceItem {

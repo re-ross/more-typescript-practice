@@ -1,6 +1,7 @@
 import { Category } from "./enums";
 import { Book, Logger, Author, Librarian, Magazine } from "./interfaces";
 import {
+  PublicLibrarian,
   UniversityLibrarian,
   ReferenceItem,
   Employee,
@@ -176,3 +177,38 @@ import "./LibrarianExtension";
 // let newLibrarian = new UniversityLibrarian();
 // newLibrarian.phone = "555-5555";
 // newLibrarian.hostSeminar("test");
+
+// ~TYPE GUARDS (type of)~
+
+function logVisitor(param: number | string) {
+  if (typeof param === "number") {
+    console.log(`${param} new visitors arrived`);
+  } else {
+    console.log(`${param.toUpperCase()} visited`);
+  }
+}
+
+// logVisitor(5);
+// logVisitor("ryan");
+
+// let lib: Librarian;
+
+// if (lib instanceof UniversityLibrarian) {
+//   lib.assistFaculty();
+// }
+// if (lib instanceof PublicLibrarian) {
+//   lib.teachCommunity();
+// }
+
+//~TYPE GUARDS (custom typeguard)~
+function isBook(text: Book | Magazine): text is Book {
+  return (<Book>text).author !== undefined;
+}
+
+let readingMaterial: Book | Magazine = util.GetAllBooks()[0];
+
+if (isBook(readingMaterial)) {
+  console.log(`The book's author is ${readingMaterial.author}`);
+} else {
+  console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+}
