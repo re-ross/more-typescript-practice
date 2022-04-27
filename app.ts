@@ -7,7 +7,7 @@ import {
   Researcher,
 } from "./classes";
 import * as util from "./lib/utilityFunctions";
-
+import "./LibrarianExtension";
 // function PrintBookInfo({ title: bookTitle, author: bookAuthor }): void {
 //   console.log(`${bookTitle} was authored by ${bookAuthor}`);
 // }
@@ -128,43 +128,51 @@ import * as util from "./lib/utilityFunctions";
 
 // ~POLYMORPHIC THIS~
 
-class LibraryBook {
-  Checkout(): this {
-    // do checkout stuff
-    console.log("Checking out a book");
-    return this;
-  }
+// class LibraryBook {
+//   Checkout(): this {
+//     // do checkout stuff
+//     console.log("Checking out a book");
+//     return this;
+//   }
 
-  CheckIn(): this {
-    // console.log("Checking in a book");
+//   CheckIn(): this {
+//     // console.log("Checking in a book");
 
-    if (this instanceof ChildrensBook) {
-      console.log("Checking in a children's book");
-    }
-    if (this instanceof ElectronicBook) {
-      console.log("Checking in an electrnoic book.");
-    }
-    return this;
-  }
-}
+//     if (this instanceof ChildrensBook) {
+//       console.log("Checking in a children's book");
+//     }
+//     if (this instanceof ElectronicBook) {
+//       console.log("Checking in an electrnoic book.");
+//     }
+//     return this;
+//   }
+// }
 
-class ChildrensBook extends LibraryBook {
-  Clean(): this {
-    //clean crayon marks
-    console.log("Cleaning a book");
-    return this;
-  }
-}
+// class ChildrensBook extends LibraryBook {
+//   Clean(): this {
+//     //clean crayon marks
+//     console.log("Cleaning a book");
+//     return this;
+//   }
+// }
 
-class ElectronicBook extends LibraryBook {
-  RemoveFromCustomerDevice(): this {
-    console.log("Removing book from device");
-    return this;
-  }
-}
+// class ElectronicBook extends LibraryBook {
+//   RemoveFromCustomerDevice(): this {
+//     console.log("Removing book from device");
+//     return this;
+//   }
+// }
 
-let kidbook = new ChildrensBook();
-kidbook.CheckIn().Clean().Checkout();
+// let kidbook = new ChildrensBook();
+// kidbook.CheckIn().Clean().Checkout();
 
-let ebook = new ElectronicBook();
-ebook.CheckIn().RemoveFromCustomerDevice().Checkout();
+// let ebook = new ElectronicBook();
+// ebook.CheckIn().RemoveFromCustomerDevice().Checkout();
+
+// ~MERGING INTERFACES~
+// let mergedBook: Book;
+// mergedBook.publisher = 'Programming Press'
+
+// let newLibrarian = new UniversityLibrarian();
+// newLibrarian.phone = "555-5555";
+// newLibrarian.hostSeminar("test");
